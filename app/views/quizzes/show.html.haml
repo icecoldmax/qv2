@@ -1,0 +1,16 @@
+.row
+  %h2 Quiz Details
+
+.row
+  .col-md-6
+    %table.table
+      %tr
+        %th Name
+        %td= @quiz.name
+
+      %tr
+        %th Author
+        %td= @quiz.author
+
+.row
+  = link_to "See Questions", root_url, class: "btn btn-default"

@@ -5,6 +5,8 @@ Quizvids::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'static_pages#home'
 
+  resources :quizzes
+
   get "static_pages/home"
   get "static_pages/help"
 
