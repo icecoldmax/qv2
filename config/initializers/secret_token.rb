@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Quizvids::Application.config.secret_key_base = '6787eab959c3469a3a008b2c8e001827984df7ec250f94084ce5c52fb71112ee4db0add1cd137232df4f531eb2268587b4f318498e74bc01538961c1d24ed164'
+
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+Quizvids::Application.config.secret_key_base = secure_token
