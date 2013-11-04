@@ -15,12 +15,12 @@ gem "jquery-rails"
 gem "jquery-ui-rails"
 gem "modernizr-rails"
 
-group :assets do
-  gem 'sass-rails', '~> 4.0.0'
-  gem 'coffee-rails', '~> 4.0.0'
-  gem 'uglifier', ' 2.1.1'
-  gem "bootstrap-sass", "~> 3.0.1.0.rc"
-end
+gem 'sass-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier', ' 2.1.1'
+gem "bootstrap-sass", "~> 3.0.1.0.rc"
+gem "underscore-rails"
+gem "backbone-rails"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
