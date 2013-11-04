@@ -1,2 +1,9 @@
-%h1 StaticPages#home
-%p Find me in app/views/static_pages/home.html.haml
+- content_for :title do
+  QuizVids
+
+.jumbotron
+  .container
+    %h1 QuizVids
+
+    = link_to "Get started!", root_path, class: "btn btn-large btn-primary"
+    = link_to "Sign up!", root_path, class: "btn btn-large btn-primary"

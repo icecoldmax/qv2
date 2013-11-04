@@ -5,8 +5,21 @@
     %title= content_for?(:title) ? yield(:title) : "App_Name"
     %meta{:content => content_for?(:description) ? yield(:description) : "App_Name", :name => "description"}
     = stylesheet_link_tag :application, :media => "all"
-    = javascript_include_tag :application
     = csrf_meta_tags
-    = yield(:head)
+    = yield :head
+    / [if lt IE 9]
+      = javascript_include_tag :modernizr
   %body
-    = yield
+    - if flash[:message]
+      #header-message= flash[:message]
+
+    %header.navbar.navbar-default.navbar-static-top
+      .container
+        .navbar-header
+          .navbar-brand
+            QuizVids
+
+    %section.container
+      = yield
+      = debug(params) if Rails.env.development?
+    = javascript_include_tag :application
