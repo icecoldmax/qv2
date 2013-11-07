@@ -1,0 +1,15 @@
+.form-group
+  = form.label :question_id, "Question ID"
+  = form.text_field :question_id, class: "form-control"
+.form-group
+  = label_tag :question_content, "Question Content"
+  = text_field_tag :question_content, "#{@question.content}", class: "form-control"
+.form-group
+  = form.label :content, "Answer"
+  = form.text_field :content, class: "form-control"
+.form-group
+  = form.label :correct, "Correct?"
+  = form.radio_button "correct", true
+  = label_tag "correct_true", "Yes"
+  = form.radio_button "correct", false
+  = label_tag "correct_false", "No"

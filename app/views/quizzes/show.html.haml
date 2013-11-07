@@ -13,4 +13,4 @@
         %td= @quiz.author
 
 .row
-  = link_to "See Questions", root_url, class: "btn btn-default"
+  = link_to "See Questions", quiz_questions_path(@quiz), class: "btn btn-default"

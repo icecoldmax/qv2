@@ -1,0 +1,22 @@
+.row
+  %h2 Answer Details
+
+.row
+  .col-md-6
+    %table.table
+      %tr
+        %th Quiz ID
+        %td= @quiz.id
+      %tr
+        %th Question ID
+        %td= @question.id
+      %tr
+        %th Question
+        %td= @question.content
+      %tr
+        %th Answer
+        %td= @answer.content
+      %tr
+        %th Correct?
+        %td
+          = @answer.correct? ? "Yes" : "No"

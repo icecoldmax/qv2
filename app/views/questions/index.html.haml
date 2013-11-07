@@ -1,0 +1,26 @@
+.row
+  %h2 Questions
+
+.row
+  .col-md-8
+    %table.table
+      %thead
+        %tr
+          %th Quiz ID
+          %th Content
+          %th
+          %th
+
+      %tbody
+        - @quiz.questions.each do |question|
+          %tr
+            %td
+              = link_to "#{question.quiz_id}", quiz_path(@quiz)
+            %td
+              = link_to "#{question.content}", quiz_question_path(@quiz, question)
+            %td
+              = link_to "Edit", edit_quiz_question_path(@quiz, question), class: "btn btn-default"
+              = link_to "Delete", quiz_question_path(@quiz, question), method: :delete, class: "btn btn-danger"
+
+.row
+  %p= link_to "New question", new_quiz_question_path(@quiz), class: "btn btn-primary"
