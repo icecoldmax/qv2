@@ -1,6 +1,8 @@
 require "spec_helper"
 
 describe QuizzesController do
+  render_views
+
   let(:quiz) { FactoryGirl.create(:quiz) }
 
   describe "#index" do

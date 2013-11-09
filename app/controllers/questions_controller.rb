@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   respond_to :html
 
   def index
-    @questions = @quiz.questions.all
+    @questions = @quiz.questions
     respond_with(@questions)
   end
 

@@ -3,8 +3,8 @@
 
   .row
     .col-md-8
-    = form_for(@quiz) do |form|
-      = render :partial => "form", :locals => { :form => form }
+      = form_for(@quiz) do |form|
+        = render :partial => "form", :locals => { :form => form }
 
-      .form-group
-        = form.button "Create", type: "submit", class: "btn btn-primary"
+        .form-group
+          = form.button "Create", type: "submit", class: "btn btn-primary"
