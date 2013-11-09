@@ -12,14 +12,21 @@ class QuizzesController < ApplicationController
 
   def new
     @quiz = Quiz.new
+    3.times { @quiz.questions.build }
+    @question_index = 0
   end
 
   def create
-    @quiz = Quiz.create(quiz_params)
-    respond_with @quiz, location: quizzes_path
+    @quiz = Quiz.new(quiz_params)
+    if @quiz.save
+      redirect_to quizzes_path
+    else
+      render 'new'
+    end
   end
 
   def edit
+    @question_index = 0
   end
 
   def update
@@ -39,7 +46,12 @@ class QuizzesController < ApplicationController
   protected
 
   def quiz_params
-    params.fetch(:quiz).permit(:name, :author)
+    params.require(:quiz)
+      .permit(:name, :author,
+        :questions_attributes => [:id, :content,
+          :answers_attributes => [:id, :content, :correct]
+        ]
+      )
   end
 
   def find_quiz

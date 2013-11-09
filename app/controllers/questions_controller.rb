@@ -40,7 +40,8 @@ class QuestionsController < ApplicationController
   protected
 
   def question_params
-    params.fetch(:question).permit(:content)
+    params.require(:question)
+      .permit(:content, answers_attributes: [:id, :content, :correct])
   end
 
   def find_quiz
