@@ -12,7 +12,12 @@ class QuizzesController < ApplicationController
 
   def new
     @quiz = Quiz.new
-    3.times { @quiz.questions.build }
+    question = @quiz.questions.build
+
+    4.times do
+      question.answers.build
+    end
+
     @question_index = 0
   end
 

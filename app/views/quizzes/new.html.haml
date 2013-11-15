@@ -1,30 +1,34 @@
 .row
   %h2 New Quiz
 
-  .row
-    .col-sm-8
-      = form_for(@quiz) do |form|
-        = render :partial => "form", :locals => { :form => form }
-        %hr
-        %h2 Questions
-        = form.fields_for :questions do |q|
-          .row
+  .row.col-sm-8
+    = form_for(@quiz) do |form|
+      = render :partial => "form", :locals => { :form => form }
+      %hr
 
-            - @question_index += 1
-            %h3= "Question #{@question_index.to_s}"
+      = form.fields_for :questions do |q|
+        .row.question{:data => { :question_index => "0" } }
+          - @question_index += 1
 
-            .form-group
-              = q.label :content, "Question Content"
-              = q.text_field :content, class: "form-control"
+          %h3
+            = "Question #{@question_index.to_s}"
+            = link_to "Remove", "#", class: "remove_question btn btn-default"
 
-              = q.fields_for :answers, 4.times { q.object.answers.build } do |af|
-                .row
-                  .form-group.col-sm-9
-                    = af.label :content, "Answer"
-                    = af.text_field :content, class: "form-control"
-                  .form-group.col-sm-3.correct_checkbox
-                    = af.label :correct, "Correct?"
-                    = af.check_box :correct
+          .form-group
+            = q.label :content, "Question Content"
+            = q.text_field :content, class: "form-control"
 
+            = q.fields_for :answers do |af|
+              .row
+                .form-group.col-sm-9
+                  = af.label :content, "Answer"
+                  = af.text_field :content, class: "form-control"
+                .form-group.col-sm-3.correct_checkbox
+                  = af.label :correct, "Correct?"
+                  = af.check_box :correct
+
+      .row
+        = link_to "Add Question", "#", class: "add_question btn btn-info"
+      .row
         .form-group
-          = form.button "Create", type: "submit", class: "btn btn-primary"
+          = form.button "Create Quiz", type: "submit", class: "btn btn-primary"
