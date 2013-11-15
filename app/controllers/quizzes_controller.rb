@@ -26,6 +26,7 @@ class QuizzesController < ApplicationController
     if @quiz.save
       redirect_to quizzes_path
     else
+      @question_index = 0
       render 'new'
     end
   end
@@ -39,6 +40,7 @@ class QuizzesController < ApplicationController
       flash[:success] = "Quiz updated"
       redirect_to @quiz
     else
+      @question_index = 0
       render 'edit'
     end
   end

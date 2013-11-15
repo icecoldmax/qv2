@@ -37,7 +37,7 @@ describe QuizzesController do
 
     context "quiz has incorrect attribs" do
       it "renders new" do
-        post :create, quiz: {}
+        post :create, quiz: { name: "" }
         expect(response).to render_template(:new)
       end
     end

@@ -1,8 +1,13 @@
+- content_for :title, "QuizVids || New Quiz"
+
 .row
   %h2 New Quiz
 
   .row.col-sm-8
     = form_for(@quiz) do |form|
+      - @quiz.errors.full_messages.each do |msg|
+        = msg
+
       = render :partial => "form", :locals => { :form => form }
       %hr
 

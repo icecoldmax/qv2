@@ -5,7 +5,6 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = @quiz.questions
-    respond_with(@questions)
   end
 
   def show
@@ -16,8 +15,12 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = @quiz.questions.create(question_params)
-    respond_with @question, location: quiz_questions_path(@quiz.id)
+    @question = @quiz.questions.build(question_params)
+    if @question.save
+      respond_with @question, location: quiz_questions_path(@quiz.id, @question)
+    else
+      render 'new', quiz_id: @quiz.id
+    end
   end
 
   def edit
