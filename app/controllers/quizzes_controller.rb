@@ -28,7 +28,7 @@ class QuizzesController < ApplicationController
       flash[:success] = "Quiz created"
       redirect_to quizzes_path
     else
-      flash[:error] = @quiz.errors.full_messages
+      flash[:danger] = @quiz.errors.full_messages
       @question_index = 0
       render 'new'
     end

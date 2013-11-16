@@ -17,7 +17,8 @@
             = link_to "QuizVids", root_path
 
     %section.container
-      = render "layouts/messages"
+
+      = render partial: "layouts/messages", flash: flash
       = yield
       = debug(params) if Rails.env.development?
     = javascript_include_tag :application
