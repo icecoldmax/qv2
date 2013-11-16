@@ -1,4 +1,8 @@
 - content_for :title, "QuizVids || Setup"
+- content_for :scripts do
+  :coffeescript
+    $ ->
+      view = new QuizVids.Views.Setup(el: $(".setup_form")).render
 
 .row
   %h2 Setup Your Quiz
@@ -6,7 +10,7 @@
 .row
   %h2 Quizzes
 
-= form_for :quiz, :url => do_quiz_path do |form|
+= form_for :quiz, url: do_quiz_path, html: { class: "setup_form" } do |form|
   .row
     .col-sm-8
       %table.table
@@ -34,6 +38,8 @@
   .row
     = label_tag :yt_search, "Search Videos"
     = search_field_tag :yt_search
+    = button_tag "Search", class: "btn btn-default", id: "yt-search"
+
 
   .row
     #yt-results

@@ -1,0 +1,3 @@
+window.QuizVids = 
+  Views:
+    Setup: {}
