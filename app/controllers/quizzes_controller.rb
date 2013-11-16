@@ -23,9 +23,12 @@ class QuizzesController < ApplicationController
 
   def create
     @quiz = Quiz.new(quiz_params)
+
     if @quiz.save
+      flash[:success] = "Quiz created"
       redirect_to quizzes_path
     else
+      flash[:error] = @quiz.errors.full_messages
       @question_index = 0
       render 'new'
     end
