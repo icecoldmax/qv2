@@ -4,4 +4,10 @@ class StaticPagesController < ApplicationController
 
   def help
   end
+
+  def setup
+  end
+
+  def quiz
+  end
 end

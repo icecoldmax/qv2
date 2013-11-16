@@ -11,8 +11,9 @@ Quizvids::Application.routes.draw do
     end
   end
 
-  get "static_pages/home"
-  get "static_pages/help"
+  get "/help" => "static_pages#help"
+  get "/setup" => "static_pages#setup"
+  get "/quiz" => "static_pages#quiz"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
