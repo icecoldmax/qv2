@@ -1,1 +1,48 @@
-%h1 Setup
+- content_for :title, "QuizVids || Setup"
+
+.row
+  %h2 Setup Your Quiz
+
+.row
+  %h2 Quizzes
+
+= form_for :quiz, :url => do_quiz_path do |form|
+  .row
+    .col-sm-8
+      %table.table
+        %tr
+          %th Quiz Name
+          %th Author
+          %th Questions
+          %th
+
+        - @quizzes.each do |quiz|
+          %tr
+            %td= quiz.name
+            %td= quiz.author
+            %td= quiz.questions.count
+            %td= check_box_tag "selected_quizzes[]", quiz.id
+
+  .row
+    .form-group
+      = label_tag :interval, "Question Interval"
+      = number_field_tag :interval, class: "form-control"
+
+  .row
+    %h2 Videos
+
+  .row
+    = label_tag :yt_search, "Search Videos"
+    = search_field_tag :yt_search
+
+  .row
+    #yt-results
+      %h3 Results
+
+  .row
+    %h3 Playlist
+    #playlist
+
+  .row
+    .form-group
+      = button_tag "Start Quiz", type: "submit", class: "btn btn-primary"
