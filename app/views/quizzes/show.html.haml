@@ -1,8 +1,11 @@
+- content_for :title, "QuizVids || Quiz"
+- question_index = 0
+
 .row
   %h2 Quiz Details
 
 .row
-  .col-md-6
+  .col-sm-8
     %table.table
       %tr
         %th Name
@@ -13,4 +16,18 @@
         %td= @quiz.author
 
 .row
-  = link_to "See Questions", quiz_questions_path(@quiz), class: "btn btn-default"
+  %h2 Questions
+
+.row
+  .col-sm-8
+    %table.table
+      %tr
+        %th No.
+        %th Question Content
+        %th Answers
+
+      - @quiz.questions.each_with_index do |question, index|
+        %tr
+          %td= index + 1
+          %td= question.content
+          %td= link_to "Answers", quiz_question_answers_path(@quiz, question)
