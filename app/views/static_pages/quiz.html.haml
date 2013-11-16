@@ -1,1 +1,20 @@
-%h1 Quiz
+- content_for :title, "QuizVids || Quiz Time!"
+
+- content_for :scripts do
+
+  = javascript_include_tag "youtube/youtube_start"
+  = javascript_include_tag "youtube/youtube_api"
+
+  :javascript
+    var quizzes = #{@selected_quizzes.to_json};
+    var interval = #{@interval.to_json};
+    var playlist = #{@playlist.to_json};
+
+  :coffeescript
+    $ ->
+
+.row
+  %h2 Quiz Time!
+
+.row
+  #ytplayer
