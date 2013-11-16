@@ -28,18 +28,22 @@
             %td= check_box_tag "selected_quizzes[]", quiz.id
 
   .row
-    .form-group
-      = label_tag :interval, "Question Interval"
-      = number_field_tag :interval, class: "form-control"
+    .col-sm-4
+      .form-group
+        = label_tag :interval, "Question Interval"
+        = number_field_tag :interval, 5, class: "form-control", step: 5
 
   .row
     %h2 Videos
 
   .row
-    = label_tag :yt_search, "Search Videos"
-    = search_field_tag :yt_search
-    = button_tag "Search", class: "btn btn-default", id: "yt-search"
-
+    .col-sm-8
+      = label_tag :yt_search, "Search Videos"
+      .form-group
+        .col-sm-10
+          = search_field_tag :yt_search, nil, class: "form-control"
+        .col-sm-2
+          = button_tag "Search", class: "btn btn-default", id: "yt-search"
 
   .row
     #yt-results
@@ -48,7 +52,8 @@
   .row
     %h3 Playlist
     #playlist
+      %ul
 
   .row
     .form-group
-      = button_tag "Start Quiz", type: "submit", class: "btn btn-primary"
+      = button_tag "Start Quiz", type: "submit", class: "btn btn-primary", id: "setup-submit"

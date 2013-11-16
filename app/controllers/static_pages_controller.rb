@@ -11,7 +11,7 @@ class StaticPagesController < ApplicationController
 
   def quiz
     quiz_ids = params[:selected_quizzes]
-    @selected_quizzes = Quiz.find(quiz_ids)
+    @selected_quizzes = quiz_ids.present? ? Quiz.find(quiz_ids) : nil
     @interval = params[:interval]
   end
 end
