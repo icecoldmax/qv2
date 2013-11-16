@@ -39,6 +39,7 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'debugger', group: [:development, :test]
 
 group :development, :test do
+  gem "quiet_assets"
   gem "pry-rails"
   gem "pry-debugger"
   gem "awesome_print"
