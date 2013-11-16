@@ -2,6 +2,13 @@ class QuizVids.Views.Quiz extends Backbone.View
 
   initialize: (options = {}) ->
     super options
-    debugger
+
+    @startPlaying()
 
   events: ->
+
+  startPlaying: ->
+    console.log "startPlaying ran"
+
+    playlist = @model.get("playlist")
+    loadPlaylist(playlist)

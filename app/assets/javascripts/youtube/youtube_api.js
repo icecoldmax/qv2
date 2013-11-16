@@ -2,8 +2,8 @@ function onYouTubePlayerAPIReady() {
     console.log("onYouTubePlayerAPIReady called");
 
     ytplayer = new YT.Player('ytplayer', {
-        width: '200px',
-        height: '200px',
+        width: '640px',
+        height: '480px',
         playerVars: { 'autoplay': 0, 'controls': 0, 'wmode': 'opaque',
             //'playlist': vids.join(),
             'origin': 'http://localhost:3000/',
@@ -16,32 +16,11 @@ function onYouTubePlayerAPIReady() {
         }
     });
 
-    window.model = new QuizVids.Models.Quiz({
-        interval: interval,
-        quizzes: quizzes,
-        playlist: playlist
-    });
-
-    model.fetch({
-        success: function() {
-            return window.view = new QuizVids.Views.Quiz({
-                el: $(".container")
-            }).render;
-        }
-    });
 }
 
 function onPlayerReady(event) {
     console.log("Player is ready");
 
-    // setInterval(updatePlayerInfo, 1000);
-    // updatePlayerInfo();
-    // interval = getParameterByName('interval');
-    // ytplayer.loadPlaylist(vids);
-    //initIFrameClick();
-    //  event.target.playVideo();
-
-    // ytplayer.loadPlaylist(gon.videos);
     var loadPlaylist, loadVideo, muteVideo, nextVideo, pauseVideo, playVideo, prevVideo, stopVideo, unmuteVideo;
 
     playVideo = function() { if (ytplayer) { return ytplayer.playVideo(); } };
@@ -63,6 +42,21 @@ function onPlayerReady(event) {
     window.loadPlaylist = loadPlaylist
     window.nextVideo = nextVideo
     window.prevVideo = prevVideo
+
+    window.model = new QuizVids.Models.Quiz({
+        interval: interval,
+        quizzes: quizzes,
+        playlist: playlist
+    });
+
+    model.fetch({
+        success: function() {
+            return window.view = new QuizVids.Views.Quiz({
+                el: $(".container"),
+                model: model
+            }).render;
+        }
+    });
 }
 
 function onPlayerStateChange(event) {

@@ -1,0 +1,25 @@
+!!!
+%html
+  %head
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
+    %title= content_for?(:title) ? yield(:title) : "QuizVids"
+    %meta{:content => content_for?(:description) ? yield(:description) : "QuizVids", :name => "description"}
+    = stylesheet_link_tag :application, :media => "all"
+    = csrf_meta_tags
+    = yield :head
+    / [if lt IE 9]
+      = javascript_include_tag :modernizr
+  %body.quiz-body
+    %header.navbar.navbar-default.navbar-static-top
+      .container
+        .navbar-header
+          .navbar-brand
+            = link_to "QuizVids", root_path
+
+    %section.container
+
+      = render partial: "layouts/messages", flash: flash
+      = yield
+      = debug(params) if Rails.env.development?
+    = javascript_include_tag :application
+    = yield :scripts

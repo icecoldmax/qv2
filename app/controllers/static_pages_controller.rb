@@ -18,7 +18,7 @@ class StaticPagesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html
+      format.html { render layout: "quiz_layout" }
       format.json do
         render :json => {"do i need this" => "dunno"}
       end
