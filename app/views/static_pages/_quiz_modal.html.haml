@@ -1,0 +1,22 @@
+.modal.fade#quiz-modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+        %h4.modal-title Question
+      .modal-body
+        .row
+          %p Here's the question
+        .row
+          .col-sm-6
+            %span Answer 1
+          .col-sm-6
+            %span Answer 2
+        .row
+          .col-sm-6
+            %span Answer 3
+          .col-sm-6
+            %span Answer 4
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+        %button.btn.btn-primary{:type => "button"} Save changes

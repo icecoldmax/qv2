@@ -51,7 +51,7 @@ function onPlayerReady(event) {
 
     model.fetch({
         success: function() {
-            return window.view = new QuizVids.Views.Quiz({
+            return window.quizView = new QuizVids.Views.Quiz({
                 el: $(".container"),
                 model: model
             }).render;

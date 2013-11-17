@@ -12,6 +12,9 @@
 
   :coffeescript
     $ ->
+      window.modalView = new QuizVids.Views.Modal(el: $("#quiz-modal")).render
 
 .row.player
   #ytplayer
+
+= render partial: "quiz_modal"
