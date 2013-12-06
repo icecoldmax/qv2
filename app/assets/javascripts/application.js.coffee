@@ -13,6 +13,7 @@
 
 #= require jquery
 #= require jquery_ujs
+#= require jquery.color.plus-names-2.1.2
 #= require underscore
 #= require backbone
 #= require bootstrap

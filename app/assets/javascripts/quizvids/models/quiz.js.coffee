@@ -23,4 +23,3 @@ class QuizVids.Models.Quiz extends Backbone.Model
 
   randomNum: (max) ->
     Math.floor(Math.random() * max)
-

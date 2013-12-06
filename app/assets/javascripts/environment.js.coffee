@@ -1,7 +1,6 @@
-window.QuizVids = 
+window.QuizVids =
   Views:
     Setup: {}
     Quiz: {}
-    Modal: {}
   Models:
     Quiz: {}
