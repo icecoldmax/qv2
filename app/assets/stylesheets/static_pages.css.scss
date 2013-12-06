@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$wetasphalt : #2c3e50;
+$concrete : #7f8c8d;
+$peterriver : #3498db;
+$emerald : #2ecc71;
+$carrot: #e67e22;
+
 .search-result {
   margin: 10px 0px;
 }
@@ -22,4 +28,37 @@
 
 .quiz-body {
   background: image-url("theater1024.jpg")
+}
+
+#quiz-modal {
+  .modal-dialog {
+    .modal-content {
+      padding: 10px;
+      background-color: $wetasphalt;
+
+      .modal-header {
+        .modal-title {
+          color: $carrot;
+        }
+      }
+
+      .modal-body {
+        .question {
+          text-align: center;
+          color: $peterriver;
+        }
+
+        .answer {
+          text-align: center;
+          font-size: 18px;
+          color: mintcream;
+          margin: 20px 0px;
+          border: outset 2px;
+          height: 50px;
+          padding-top: 12px;
+          background-color: $concrete;
+        }
+      }
+    }
+  }
 }

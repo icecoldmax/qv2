@@ -14,8 +14,8 @@ class QuizVids.Views.Quiz extends Backbone.View
 
   templates:
     modal: """
-      <div class="row">
-        <p><%= question.content %></p>
+      <div class="row question">
+        <h3><%= question.content %></h3>
       </div>
       <div class="row answers">
         <% _.each(answers, function(answer) { %>
@@ -53,7 +53,7 @@ class QuizVids.Views.Quiz extends Backbone.View
     data = @model.get("currentQuizData")
     quiz = data.quiz
     question = data.question
-    answers = data.answers
+    answers = _.shuffle(data.answers)
     @$("#quiz-modal .modal-title").text "From: #{quiz.name} by #{quiz.author}"
     @$("#quiz-modal .modal-body").html _.template(@templates.modal)(question: question, answers: answers)
     @showModal()
@@ -68,7 +68,7 @@ class QuizVids.Views.Quiz extends Backbone.View
 
   hideModal: =>
     $("#quiz-modal").modal("hide")
-    _.delay(@setModalBackgroundColour, 1000, "white")
+    _.delay(@setModalBackgroundColour, 1000, "#2c3e50")
 
   setModalBackgroundColour: (colour) ->
     $("#quiz-modal .modal-content").css("background-color": colour)
@@ -81,11 +81,16 @@ class QuizVids.Views.Quiz extends Backbone.View
       @incorrectAnswer()
 
   correctAnswer: ->
-    $("#quiz-modal .modal-content").css("background-color": "lightgreen")
-    $("#quiz-modal .modal-content").animate("background-color": "#41B432", 600)
+    $("#quiz-modal .modal-content").css("background-color": "lightyellow")
+    $("#quiz-modal .modal-content").animate("background-color": "palegreen", 600)
+    $("#quiz-modal .answer[data-correct=true]").animate("background-color": "lightgreen", 600)
+    $("#quiz-modal .answer[data-correct=false]").animate("background-color": "indianred", 600)
+
     _.delay(@hideQuiz, 1500)
 
   incorrectAnswer: ->
     $("#quiz-modal .modal-content").css("background-color": "pink")
     $("#quiz-modal .modal-content").animate("background-color": "rgb(220, 20, 60)", 600)
+    $("#quiz-modal .answer[data-correct=true]").animate("background-color": "lightgreen", 600)
+    $("#quiz-modal .answer[data-correct=false]").animate("background-color": "indianred", 600)
     _.delay(@hideQuiz, 1500)
