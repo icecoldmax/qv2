@@ -5,17 +5,20 @@ Quizvids::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'static_pages#home'
 
+  resources :users
+
   resources :quizzes do
     resources :questions do
       resources :answers
     end
   end
 
-  get "/help" => "static_pages#help"
-  get "/setup" => "static_pages#setup"
-  post "/quiz" => "static_pages#quiz", as: "do_quiz"
-  get "/quiz" => "static_pages#quiz", as: "get_quiz"
-  get "/quiz_json" => "static_pages#quiz_json", as: "quiz_json"
+  match "/signup", to: "users#new", via: "get"
+  match "/help", to: "static_pages#help", via: "get"
+  match "/setup", to: "static_pages#setup", via: "get"
+  match "/quiz", to: "static_pages#quiz", as: "do_quiz", via: "post"
+  match "/quiz", to: "static_pages#quiz", as: "get_quiz", via: "get"
+  match "/quiz_json", to: "static_pages#quiz_json", as: "quiz_json", via: "get"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

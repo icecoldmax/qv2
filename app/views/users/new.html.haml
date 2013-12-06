@@ -1,0 +1,8 @@
+- content_for :title, "QuizVids || Sign Up"
+%h1 Sign Up
+
+.row
+  .col-sm-6.col-sm-offset-3
+    = form_for(@user) do |form|
+      = render partial: "form", locals: { form: form }
+      = form.submit "Create Account", class: "btn btn-large btn-primary"

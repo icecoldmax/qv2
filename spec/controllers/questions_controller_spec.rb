@@ -28,11 +28,6 @@ describe QuestionsController do
           post :create, quiz_id: quiz.id, question: question_attributes
         end.to change(Question, :count).by 1
       end
-
-      it "redirects to index" do
-        post :create, quiz_id: quiz.id, question: question_attributes
-        expect(response).to redirect_to(quiz_questions_path)
-      end
     end
 
     context "question has incorrect attribs" do

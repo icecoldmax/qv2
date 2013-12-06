@@ -1,0 +1,8 @@
+- content_for :title, "QuizVids || Users"
+%h1 User Index
+
+.row
+  .col-sm-8.col-sm-offset-2
+    - @users.each do |user|
+      = user.name
+      = user.email

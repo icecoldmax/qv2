@@ -1,0 +1,8 @@
+- content_for :title, "QuizVids || Edit User"
+%h1 Edit User Details
+
+.row
+  .col-sm-6.col-sm-offset-3
+    = form_for(@user) do |form|
+      = render partial: "form", locals: { form: form }
+      = form.submit "Update", class: "btn btn-large btn-primary"
