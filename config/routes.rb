@@ -15,6 +15,7 @@ Quizvids::Application.routes.draw do
   get "/setup" => "static_pages#setup"
   post "/quiz" => "static_pages#quiz", as: "do_quiz"
   get "/quiz" => "static_pages#quiz", as: "get_quiz"
+  get "/quiz_json" => "static_pages#quiz_json", as: "quiz_json"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

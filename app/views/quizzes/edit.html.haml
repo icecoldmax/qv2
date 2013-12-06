@@ -1,4 +1,5 @@
 - content_for :title, "QuizVids || Edit Quiz"
+- question_index = 0
 
 .row
   %h2 Edit Quiz
@@ -13,10 +14,12 @@
       %hr
       %h2 Questions
       = form.fields_for :questions do |q|
-        .row
+        .row.question{:data => { :question_index => "0" } }
+          - question_index += 1
 
-          - @question_index += 1
-          %h3= "Question #{@question_index.to_s}"
+          %h3
+            = "Question #{question_index.to_s}"
+            = link_to "Remove", "#", class: "remove_question btn btn-default"
 
           .form-group
             = q.label :content, "Question Content"
@@ -31,5 +34,8 @@
                   = af.label :correct, "Correct?"
                   = af.check_box :correct
 
-      .form-group
-        = form.button "Update", type: "submit", class: "btn btn-primary"
+      .row
+        = link_to "Add Question", "#", class: "add_question btn btn-info"
+      .row
+        .form-group
+          = form.button "Update", type: "submit", class: "btn btn-primary"

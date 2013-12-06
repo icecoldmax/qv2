@@ -33,30 +33,17 @@ function onPlayerReady(event) {
     nextVideo = function() { if (ytplayer) { return ytplayer.nextVideo(); } };
     prevVideo = function() { if (ytplayer) { return ytplayer.previousVideo(); } }; 
 
-    window.playVideo = playVideo
-    window.pauseVideo = pauseVideo
-    window.stopVideo = stopVideo
-    window.muteVideo = muteVideo
-    window.unmuteVideo = unmuteVideo
-    window.loadVideo = loadVideo
-    window.loadPlaylist = loadPlaylist
-    window.nextVideo = nextVideo
-    window.prevVideo = prevVideo
+    window.playVideo = playVideo;
+    window.pauseVideo = pauseVideo;
+    window.stopVideo = stopVideo;
+    window.muteVideo = muteVideo;
+    window.unmuteVideo = unmuteVideo;
+    window.loadVideo = loadVideo;
+    window.loadPlaylist = loadPlaylist;
+    window.nextVideo = nextVideo;
+    window.prevVideo = prevVideo;
 
-    window.model = new QuizVids.Models.Quiz({
-        interval: interval,
-        quizzes: quizzes,
-        playlist: playlist
-    });
-
-    model.fetch({
-        success: function() {
-            return window.quizView = new QuizVids.Views.Quiz({
-                el: $(".container"),
-                model: model
-            }).render;
-        }
-    });
+    $.holdReady(false);
 }
 
 function onPlayerStateChange(event) {

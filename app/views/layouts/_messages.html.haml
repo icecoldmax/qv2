@@ -1,5 +1,4 @@
-- flash.each do |name, msgs|
+- flash.each do |name, msg|
   %div{:class => "alert alert-#{name}"}
     %a.close{"data-dismiss" => "alert"} ×
-    - msgs.each do |msg|
-      = content_tag :div, msg, :id => "flash_#{name}"
+    = content_tag :div, msg, :id => "flash_#{name}"
