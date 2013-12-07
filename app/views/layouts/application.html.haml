@@ -15,6 +15,25 @@
         .navbar-header
           .navbar-brand
             = link_to "QuizVids", root_path
+          .navbar-inner
+            .container
+              %nav
+                %ul.nav.pull-right
+                  %li= link_to "Home", root_path
+                  %li= link_to "Help", help_path
+                  - if signed_in?
+                    %li= link_to "Users", "#"
+                    %li.dropdown#fat-menu
+                      %a{:href => "#", :class => "dropdown-toggle", :data => { :toggle => "dropdown" } }
+                        Account
+                        %b.caret= ""
+                        %ul.dropdown-menu
+                          %li= link_to "Profile", current_user
+                          %li= link_to "Settings", "#"
+                          %li.divider
+                          %li= link_to "Sign Out", signout_path, method: "delete"
+                  - else
+                    %li= link_to "Sign in", signin_path
 
     %section.container
 

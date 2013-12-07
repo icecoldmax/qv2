@@ -18,8 +18,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash.now[:success] = "User created"
-      redirect_to users_path
+      sign_in @user
+      flash.now[:success] = "Welcome to QuizVids!"
+      redirect_to @user
     else
       flash.now[:danger] = @user.errors.full_messages
       render 'new'

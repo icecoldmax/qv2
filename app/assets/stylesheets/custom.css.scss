@@ -112,3 +112,16 @@ input {
   @extend .control-group;
   @extend .error;
 }
+
+.nav.pull-right {
+  margin-top: 15px;
+  li {
+    display: inline;
+    a {
+      display: inline;
+    }
+  }
+  .dropdown-menu li a {
+    display: block;
+  }
+}

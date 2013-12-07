@@ -3,9 +3,9 @@ Quizvids::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#home'
 
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
   resources :quizzes do
     resources :questions do
@@ -13,7 +13,10 @@ Quizvids::Application.routes.draw do
     end
   end
 
+  root 'static_pages#home'
   match "/signup", to: "users#new", via: "get"
+  match "/signin", to: "sessions#new", via: "get"
+  match "/signout", to: "sessions#destroy", via: "delete"
   match "/help", to: "static_pages#help", via: "get"
   match "/setup", to: "static_pages#setup", via: "get"
   match "/quiz", to: "static_pages#quiz", as: "do_quiz", via: "post"
