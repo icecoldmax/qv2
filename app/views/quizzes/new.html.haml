@@ -4,32 +4,32 @@
 .row
   %h2 New Quiz
 
-  .row.col-sm-8
-    = form_for(@quiz) do |form|
+.row.col-sm-8
+  = form_for(@quiz) do |form|
 
-      = render :partial => "form", :locals => { :form => form }
-      %hr
+    = render :partial => "form", :locals => { :form => form }
+    %hr
 
-      = form.fields_for :questions do |q|
-        .row.question{:data => { :question_index => "0" } }
-          - question_index += 1
+    = form.fields_for :questions do |q|
+      .row.question{:data => { :question_index => "0" } }
+        - question_index += 1
 
-          %h3
-            = "Question #{question_index.to_s}"
-            = link_to "Remove", "#", class: "remove_question btn btn-default"
+        %h3
+          = "Question #{question_index.to_s}"
+          = link_to "Remove", "#", class: "remove_question btn btn-default"
 
-          .form-group
-            = q.label :content, "Question Content"
-            = q.text_field :content, class: "form-control"
+        .form-group
+          = q.label :content, "Question Content"
+          = q.text_field :content, class: "form-control"
 
-            = q.fields_for :answers do |af|
-              .row
-                .form-group.col-sm-9
-                  = af.label :content, "Answer"
-                  = af.text_field :content, class: "form-control"
-                .form-group.col-sm-3.correct_checkbox
-                  = af.label :correct, "Correct?"
-                  = af.check_box :correct
+          = q.fields_for :answers do |af|
+            .row
+              .form-group.col-sm-9
+                = af.label :content, "Answer"
+                = af.text_field :content, class: "form-control"
+              .form-group.col-sm-3.correct_checkbox
+                = af.label :correct, "Correct?"
+                = af.check_box :correct
 
       .row
         = link_to "Add Question", "#", class: "add_question btn btn-info"

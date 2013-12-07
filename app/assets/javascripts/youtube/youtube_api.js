@@ -1,6 +1,4 @@
 function onYouTubePlayerAPIReady() {
-    console.log("onYouTubePlayerAPIReady called");
-
     ytplayer = new YT.Player('ytplayer', {
         width: '640px',
         height: '480px',
@@ -15,7 +13,6 @@ function onYouTubePlayerAPIReady() {
         'onError': onPlayerError
         }
     });
-
 }
 
 function onPlayerReady(event) {
@@ -47,7 +44,7 @@ function onPlayerReady(event) {
 }
 
 function onPlayerStateChange(event) {
-    console.log("player state change");
+    /* console.log("player state change"); */
     // var newState = event.data;
     // updateHTML("playerState", newState);
     // console.log("newState: " + newState);

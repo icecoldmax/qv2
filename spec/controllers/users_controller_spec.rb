@@ -5,6 +5,10 @@ describe UsersController do
 
   let(:user) { FactoryGirl.create(:user) }
 
+  before do
+    sign_in user
+  end
+
   describe "#new" do
     it "renders the new template" do
       get :new
@@ -13,7 +17,7 @@ describe UsersController do
   end
 
   describe "#create" do
-    let(:user_attributes) { FactoryGirl.attributes_for(:user) }
+    let(:user_attributes) { FactoryGirl.attributes_for(:user, email: "new@email.com") }
 
     context "valid attribs" do
       it "creates a user" do
@@ -56,7 +60,12 @@ describe UsersController do
   end
 
   describe "#destroy" do
-    let!(:user) { FactoryGirl.create(:user) }
+    let(:admin) { FactoryGirl.create(:admin, email: "admin@admin.com") }
+    let!(:user) { FactoryGirl.create(:user, email: "diff@diff.com") }
+
+    before do
+      sign_in admin
+    end
 
     it "destroys a user" do
       expect do

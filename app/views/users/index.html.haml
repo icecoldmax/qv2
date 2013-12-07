@@ -1,8 +1,10 @@
 - content_for :title, "QuizVids || Users"
 %h1 User Index
 
-.row
-  .col-sm-8.col-sm-offset-2
-    - @users.each do |user|
-      = user.name
+- @users.each do |user|
+  .row
+    .col-sm-8.col-sm-offset-2
+      = link_to user.name, user
       = user.email
+      - if current_user.admin? && !current_user?(user)
+        = link_to "delete", user, method: :delete, data: { confirm: "Are you sure?" }
