@@ -2,9 +2,6 @@
 
 - content_for :scripts do
 
-  = javascript_include_tag "youtube/youtube_start"
-  = javascript_include_tag "youtube/youtube_api"
-
   :javascript
     var quizzes = #{@selected_quizzes.to_json};
     var interval = parseInt(#{@interval.to_json});

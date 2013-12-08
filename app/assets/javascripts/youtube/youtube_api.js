@@ -4,7 +4,7 @@ function onYouTubePlayerAPIReady() {
         height: '480px',
         playerVars: { 'autoplay': 0, 'controls': 0, 'wmode': 'opaque',
             //'playlist': vids.join(),
-            'origin': 'http://localhost:3000/',
+            'origin': 'https://quizvids.herokuapp.com/'
             'modestbranding': 1, 'showinfo': 0 
         },
         events: {
