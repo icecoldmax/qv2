@@ -33,7 +33,8 @@ class StaticPagesController < ApplicationController
     data = quizzes.map do |quiz|
       {
         "name" => quiz.name,
-        "author" => quiz.author,
+        "author" => quiz.user.name,
+        "user_id" => quiz.user.id,
         "questions" => questions(quiz.id)
       }
     end

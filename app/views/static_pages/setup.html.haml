@@ -24,7 +24,7 @@
         - @quizzes.each do |quiz|
           %tr
             %td= quiz.name
-            %td= quiz.author
+            %td= quiz.user.name
             %td= quiz.questions.count
             %td= check_box_tag "selected_quizzes[]", quiz.id
 

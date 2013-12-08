@@ -3,7 +3,12 @@ require "spec_helper"
 describe QuizzesController do
   render_views
 
-  let(:quiz) { FactoryGirl.create(:quiz) }
+  let(:user) { FactoryGirl.create(:user) }
+  let(:quiz) { FactoryGirl.create(:quiz, user: user) }
+
+  before do
+    sign_in(user)
+  end
 
   describe "#index" do
     it "renders the index page" do
@@ -20,7 +25,7 @@ describe QuizzesController do
   end
 
   describe "#create" do
-    let(:quiz_attributes) { FactoryGirl.attributes_for(:quiz) }
+    let(:quiz_attributes) { FactoryGirl.attributes_for(:quiz, user_id: user.id) }
 
     context "quiz has correct attributes" do
       it "creates a quiz" do
@@ -36,8 +41,10 @@ describe QuizzesController do
     end
 
     context "quiz has incorrect attribs" do
+      let(:quiz_attributes) { FactoryGirl.attributes_for(:quiz, user_id: user.id, name: "") }
+
       it "renders new" do
-        post :create, quiz: { name: "" }
+        post :create, quiz: quiz_attributes
         expect(response).to render_template(:new)
       end
     end
@@ -51,7 +58,7 @@ describe QuizzesController do
   end
 
   describe "#update" do
-    let(:quiz_attributes) { { name: "Different Name", author: "Chi" } }
+    let(:quiz_attributes) { { name: "Different Name" } }
 
     it "updates the quiz" do
       put :update, id: quiz.id, quiz: quiz_attributes
@@ -66,7 +73,7 @@ describe QuizzesController do
   end
 
   describe "#destroy" do
-    let!(:quiz) { FactoryGirl.create(:quiz) }
+    let!(:quiz) { FactoryGirl.create(:quiz, user: user) }
 
     it "deletes the quiz" do
       expect do

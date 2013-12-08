@@ -2,7 +2,8 @@ require "spec_helper"
 
 describe QuestionsController do
   render_views
-  let(:quiz) { FactoryGirl.create(:quiz) }
+  let(:user) { FactoryGirl.create(:user) }
+  let(:quiz) { FactoryGirl.create(:quiz, user: user) }
   let(:question) { FactoryGirl.create(:question, quiz: quiz) }
 
   describe "#index" do
