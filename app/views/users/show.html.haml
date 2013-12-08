@@ -1,2 +1,19 @@
 - content_for :title, "QuizVids || Show User"
-%h1 Show
+%h1= @user.name
+
+.row
+  %h2 Quizzes
+
+.row
+  .col-sm-4.col-sm-offset-3
+    %h4 Quiz Name
+  .col-sm-4
+    %h4 Questions Count
+
+- @user.quizzes.each do |quiz|
+  .row
+    .col-sm-4.col-sm-offset-3
+      = link_to quiz.name, quiz_path(quiz)
+    .col-sm-4
+      = quiz.questions.count
+

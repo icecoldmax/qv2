@@ -1,5 +1,4 @@
 - content_for :title, "QuizVids || Quiz"
-- question_index = 0
 
 .row
   %h2 Quiz Details
@@ -13,21 +12,10 @@
 
       %tr
         %th Author
-        %td= @quiz.author
+        %td= @quiz.user.name
 
-.row
-  %h2 Questions
-
-.row
-  .col-sm-8
-    %table.table
-      %tr
-        %th No.
-        %th Question Content
-        %th Answers
-
-      - @quiz.questions.each_with_index do |question, index|
-        %tr
-          %td= index + 1
-          %td= question.content
-          %td= link_to "Answers", quiz_question_answers_path(@quiz, question)
+- if signed_in? && ((current_user == @quiz.user) || admin?)
+  .row
+    .col-sm-8
+      = link_to "Edit", edit_quiz_path(@quiz), class: "btn btn-default"
+      = link_to "Delete", quiz_path(@quiz), method: :delete, class: "btn btn-danger"

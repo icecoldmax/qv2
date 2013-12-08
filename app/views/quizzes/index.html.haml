@@ -19,10 +19,11 @@
             %td
               = link_to "#{quiz.name}", quiz
             %td
-              = link_to "#{quiz.author}", quiz
-            %td
-              = link_to "Edit", edit_quiz_path(quiz), class: "btn btn-default"
-              = link_to "Delete", quiz_path(quiz), method: :delete, class: "btn btn-danger"
+              = link_to "#{quiz.user.name}", quiz
+            - if signed_in? && ((current_user == quiz.user) || admin? )
+              %td
+                = link_to "Edit", edit_quiz_path(quiz), class: "btn btn-default"
+                = link_to "Delete", quiz_path(quiz), method: :delete, class: "btn btn-danger"
 
 .row
   %p= link_to "New quiz", new_quiz_path, class: "btn btn-primary"
