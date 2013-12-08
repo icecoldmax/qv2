@@ -10,14 +10,7 @@
     / [if lt IE 9]
       = javascript_include_tag :modernizr
   %body.quiz-body
-    %header.navbar.navbar-default.navbar-static-top.navbar-inverse
-      .container
-        .navbar-header
-          .navbar-brand
-            = link_to "QuizVids", root_path
-
     %section.container
-
       = render partial: "layouts/messages", flash: flash
       = yield
       = debug(params) if Rails.env.development?
