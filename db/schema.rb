@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131208022910) do
+ActiveRecord::Schema.define(version: 20131208042745) do
 
   create_table "answers", force: true do |t|
     t.string   "content"
