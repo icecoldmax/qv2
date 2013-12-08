@@ -4,6 +4,7 @@ class QuizVids.Views.Quiz extends Backbone.View
     super options
 
     @model.bind "change:currentQuizData", @updateModal, @
+    @model.bind "change:state", @changeState, @
 
     @initiateModal()
     @startPlaying()
@@ -26,6 +27,12 @@ class QuizVids.Views.Quiz extends Backbone.View
       </div>
     """
 
+  changeState: ->
+    state = @model.get("state")
+    switch state
+      when 1 then @startTimer()
+      when 2 then @clearTimer()
+
   initiateModal: ->
     $("#quiz-modal").modal
       show: false
@@ -35,7 +42,6 @@ class QuizVids.Views.Quiz extends Backbone.View
   startPlaying: ->
     playlist = @model.get("playlist")
     loadPlaylist(playlist)
-    @startTimer()
 
   startTimer: =>
     @quizTimer = setInterval(@showQuiz, interval * 1000)
@@ -45,7 +51,6 @@ class QuizVids.Views.Quiz extends Backbone.View
 
   showQuiz: =>
     pauseVideo()
-    @clearTimer()
     @model.getRandomQuestion()
     @updateModal()
 
@@ -64,7 +69,6 @@ class QuizVids.Views.Quiz extends Backbone.View
   hideQuiz: =>
     @hideModal()
     playVideo()
-    @startTimer()
 
   hideModal: =>
     $("#quiz-modal").modal("hide")

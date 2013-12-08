@@ -3,6 +3,7 @@ class QuizVids.Models.Quiz extends Backbone.Model
 
   initialize: (options = {}) ->
     super options
+    @set state: -1
 
   getRandomQuestion: ->
     data = @get "quiz_data"
