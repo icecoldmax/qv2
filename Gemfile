@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
 gem 'rails', '4.0.1'
-gem 'sqlite3'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -39,6 +39,7 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'debugger', group: [:development, :test]
 
 group :development, :test do
+  gem 'sqlite3'
   gem "quiet_assets"
   gem "pry-rails"
   gem "pry-debugger"
