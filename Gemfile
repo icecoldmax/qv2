@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 ruby '2.0.0'
-gem 'rails', '4.0.1'
+gem 'rails', '4.0.2'
+gem 'pg', '0.15.1'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -39,7 +40,6 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'debugger', group: [:development, :test]
 
 group :development, :test do
-  gem 'sqlite3'
   gem "quiet_assets"
   gem "pry-rails"
   gem "pry-debugger"
@@ -57,6 +57,5 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end

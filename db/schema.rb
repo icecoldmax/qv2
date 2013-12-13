@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20131208042745) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "answers", force: true do |t|
     t.string   "content"
     t.integer  "question_id"
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 20131208042745) do
     t.datetime "updated_at"
   end
 
-  add_index "answers", ["question_id"], name: "index_answers_on_question_id"
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
 
   create_table "questions", force: true do |t|
     t.string   "content"
@@ -30,7 +33,7 @@ ActiveRecord::Schema.define(version: 20131208042745) do
     t.datetime "updated_at"
   end
 
-  add_index "questions", ["quiz_id"], name: "index_questions_on_quiz_id"
+  add_index "questions", ["quiz_id"], name: "index_questions_on_quiz_id", using: :btree
 
   create_table "quizzes", force: true do |t|
     t.string   "name"
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 20131208042745) do
     t.integer  "user_id"
   end
 
-  add_index "quizzes", ["user_id"], name: "index_quizzes_on_user_id"
+  add_index "quizzes", ["user_id"], name: "index_quizzes_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -51,7 +54,7 @@ ActiveRecord::Schema.define(version: 20131208042745) do
     t.boolean  "admin",           default: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end
