@@ -3,6 +3,7 @@ class Question < ActiveRecord::Base
   has_many :answers
 
   default_scope { order(:id) }
+
   validates :content, presence: true
   validate :one_correct_answer
 
